@@ -27,4 +27,4 @@ def createNinja():
         return redirect('/ninjas')
 
     flash("Ninja creado correctamente", "success")
-    return redirect('/dojos')
+    return redirect('/dojos/' + request.form['dojo_id'])
