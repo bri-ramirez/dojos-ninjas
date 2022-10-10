@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %} 
+<div class="row mt-5 justify-content-between">
+    <div class="col-5">
+        <h1 class="my-5">Nuevo Dojo</h1>
+
+        <form class="border rounded px-3 py-5 w-80" action="/dojos" method="POST">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp" required>
+                <div id="nameHelp" class="form-text">Pon el nombre del Dojo.</div>
+            </div>
+    
+            <button type="submit" class="btn btn-success mt-5">Crear</button>
+        </form>
+        
+    </div>
+    <div class="col-7">
+        <h1 class="my-5">All Dojos</h1>
+        
+        <ul class="list-group">
+            {% for dojo in dojos %}
+                <li class="list-group-item">
+                    <a href="{{ url_for( 'showDojo', dojo_id = dojo.id ) }}">{{ dojo.name | title }}</a>
+                </li>
+            {% else %}
+                <li class="list-group-item">No existe ningún Dojo</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

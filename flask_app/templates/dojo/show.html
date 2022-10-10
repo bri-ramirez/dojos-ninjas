@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %} 
+
+<h1 class="my-5">Ninjas de {{ dojo.name }} </h1>
+
+
+<table class="table table-dark table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Edad</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ninja in dojo.ninjas %}
+            <tr>
+                <td>{{ ninja.first_name }}</td>
+                <td>{{ ninja.last_name }}</td>
+                <td>{{ ninja.age }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <th colspan="3" class="text-center">No existen ninjas en el Dojo</th>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

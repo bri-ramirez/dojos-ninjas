@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %} 
+<div class="row mt-5 justify-content-center">
+    <div class="w-50">
+        <h1 class="my-5">Nuevo Ninja</h1>
+
+        <form class="border rounded px-3 py-5 w-80" action="/ninjas" method="POST">
+            <div class="mb-3">
+                <label for="dojo_id" class="form-label">Dojo</label>
+                <select id="dojo_id" class="form-select" name="dojo_id" aria-describedby="dojoHelp">
+                    <option value="">Seleccione</option>
+
+                    {% for dojo in dojos %}
+                        <option value={{ dojo.id }}>{{ dojo.name }}</option>
+                    {% endfor %}
+
+                </select>
+                <div id="dojoHelp" class="form-text">Selecciona un Dojo.</div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="first_name" class="form-label">Nombre</label>
+                <input type="text" name="first_name" class="form-control" id="first_name" aria-describedby="first_nameHelp" required>
+                <div id="first_nameHelp" class="form-text">Pon el nombre del ninja.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="last_name" class="form-label">Apellido</label>
+                <input type="text" name="last_name" class="form-control" id="last_name" aria-describedby="last_nameHelp" required>
+                <div id="last_nameHelp" class="form-text">Pon el nombre del ninja.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="age" class="form-label">Edad</label>
+                <input type="number" name="age" class="form-control" id="age" aria-describedby="ageHelp" required>
+                <div id="ageHelp" class="form-text">Pon la edad.</div>
+            </div>
+    
+            <button type="submit" class="btn btn-success mt-5">Crear</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
